@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+output/
+*/dist/
+*/build/
+*/out/
+*/output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment and local files
+.env
+.env.*
+!.env.example
+*.local
+
+# Tool caches and local agent state
+.openai-docs-cache/
+.opencode/node_modules/
+.opencode/package-lock.json
+.opencode/package.json
+.opencode/skills/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.playwright-cli/
+*/.playwright-cli/
+token-store-video/{
