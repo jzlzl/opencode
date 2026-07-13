@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { 
   Sparkles, 
@@ -133,42 +133,21 @@ const features = [
   }
 ]
 
-function TokenCounter() {
-  const [tokens, setTokens] = useState(0)
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTokens(prev => {
-        if (prev >= 1000000) return 0
-        return prev + Math.floor(Math.random() * 10000) + 5000
-      })
-    }, 100)
-    
-    return () => clearInterval(interval)
-  }, [])
-
-  const formatNumber = (num) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`
-    if (num >= 1000) return `${(num / 1000).toFixed(0)}K`
-    return num.toString()
-  }
-
+function PromoVideo() {
   return (
     <div className="relative">
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 rounded-full blur-3xl"></div>
-      <div className="relative bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-12">
-        <div className="text-center">
-          <div className="text-7xl md:text-9xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 font-mono">
-            {formatNumber(tokens)}
-          </div>
-          <div className="text-gray-400 text-xl font-medium">Tokens processed today</div>
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-            <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-            <span className="text-gray-500 text-base ml-3 font-medium">Live</span>
-          </div>
-        </div>
+      <div className="relative overflow-hidden bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl shadow-cyan-500/10">
+        <video
+          className="block w-full aspect-video bg-black object-cover"
+          controls
+          playsInline
+          preload="metadata"
+          aria-label="TokenFlow promotional video"
+        >
+          <source src="/tokenflow-promo-zh.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   )
@@ -414,7 +393,7 @@ function App() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <TokenCounter />
+              <PromoVideo />
             </motion.div>
           </div>
         </div>
