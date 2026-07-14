@@ -41,4 +41,3 @@ Thumbs.db
 !.vscode/extensions.json
 .playwright-cli/
 */.playwright-cli/
-token-store-video/{
