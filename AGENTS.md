@@ -11,6 +11,7 @@
 读取这些文档后，再根据当前任务只阅读相关源码文件；不要为了建立上下文而默认扫描整个仓库。
 
 如果用户只给出一个简短任务，可以按 `docs/NEW_CHAT_PROMPT.md` 的模板理解任务入口。
+如果用户提到提交、push、commit、GitHub 或 PR，优先读取 `docs/GIT_WORKFLOW.md`。
 
 ## 并行开发规则 / Parallel Development
 

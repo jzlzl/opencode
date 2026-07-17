@@ -64,6 +64,7 @@ The video project is intentionally separate from the landing page so the same pr
 - `README.md` / `README.zh-CN.md`: entry pages for humans and new Codex sessions.
 - `docs/PROJECT_MAP.md`: stable onboarding map for the project shape and entry points.
 - `docs/COMMANDS.md`: compact command index for day-to-day work.
+- `docs/GIT_WORKFLOW.md`: lightweight guide for committing and pushing to GitHub.
 - `docs/NEW_CHAT_PROMPT.md`: copyable short prompt templates for starting new chats.
 - `docs/HANDOFFS/`: task-specific handoff notes for continuation work.
 - `token-store/src/`: landing page source code.
@@ -72,6 +73,7 @@ The video project is intentionally separate from the landing page so the same pr
 - `token-store-video/public/`: voiceover, music, and rendered video assets.
 - `.agents/`: agent-specific support files and any local handoff artifacts.
 - `.opencode/`: Codex/OpenCode local configuration.
+- `templates/new-project/`: reusable starter layout for a new Codex-managed project.
 
 ## Important Config
 
@@ -179,4 +181,5 @@ Good follow-up files:
 
 - Keep `AGENTS.md` as the behavioral contract for new sessions.
 - Keep `README.md`, `README.zh-CN.md`, `docs/PROJECT_MAP.md`, and `docs/COMMANDS.md` aligned with the actual project shape and scripts.
+- Keep `docs/GIT_WORKFLOW.md` aligned with the actual Git remote and submission flow.
 - Add one handoff record per substantial task so future sessions can continue from the latest state without re-reading the whole project.

@@ -4,6 +4,8 @@ This file is the compact command index for future Codex sessions.
 
 Read `AGENTS.md` and `docs/PROJECT_MAP.md` first, then use this file for the actual commands.
 
+For commit and push steps, see `docs/GIT_WORKFLOW.md`.
+
 ## Root Workspace
 
 From `D:\opencode`:

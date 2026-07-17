@@ -27,8 +27,10 @@ The landing page is the primary user-facing app. The video project is a separate
 
 - For a project overview and source-entry map, open `docs/PROJECT_MAP.md`.
 - For commands and validation steps, open `docs/COMMANDS.md`.
+- For GitHub commit and push flow, open `docs/GIT_WORKFLOW.md`.
 - For task history and handoff context, open the latest file under `docs/HANDOFFS/`.
 - For a copyable new-chat template, open `docs/NEW_CHAT_PROMPT.md`.
+- For a reusable new-project starter, open `templates/new-project/TEMPLATE_USAGE.md`.
 
 ## Quick Run
 
@@ -81,7 +83,9 @@ Remotion Studio opens locally and is used to preview compositions, inspect frame
 
 - [Project Map](docs/PROJECT_MAP.md)
 - [Command Index](docs/COMMANDS.md)
+- [Git Workflow](docs/GIT_WORKFLOW.md)
 - [New Chat Prompt](docs/NEW_CHAT_PROMPT.md)
+- [New Project Template](templates/new-project/TEMPLATE_USAGE.md)
 
 ## License
 
