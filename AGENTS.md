@@ -1,5 +1,17 @@
 # Agent Instructions
 
+## 新会话默认入口 / New Chat Defaults
+
+新开的 Codex 对话进入本仓库时，除非用户明确要求跳过，应优先读取：
+- `README.md` 或 `README.zh-CN.md`
+- `docs/PROJECT_MAP.md`
+- `docs/COMMANDS.md`
+- 与当前任务相关的 `docs/HANDOFFS/*.md`
+
+读取这些文档后，再根据当前任务只阅读相关源码文件；不要为了建立上下文而默认扫描整个仓库。
+
+如果用户只给出一个简短任务，可以按 `docs/NEW_CHAT_PROMPT.md` 的模板理解任务入口。
+
 ## 并行开发规则 / Parallel Development
 
 本仓库可能会被多个 Codex 对话并行开发。
@@ -67,4 +79,3 @@
 - 验证结果
 - 已知风险
 - 下一步建议
-

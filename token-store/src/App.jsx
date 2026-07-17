@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
   Sparkles,
@@ -15,7 +15,9 @@ import {
   Network,
   BarChart3,
   Users,
-  ChevronDown
+  ChevronDown,
+  Moon,
+  Sun
 } from 'lucide-react'
 import './App.css'
 
@@ -408,11 +410,29 @@ function LanguageToggle({ lang, copy, onToggle }) {
       onClick={onToggle}
       aria-label={copy.switchLabel}
       title={copy.switchLabel}
-      className="inline-flex h-11 min-w-[108px] items-center justify-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 text-sm font-medium text-emerald-50 shadow-[0_0_24px_rgba(16,185,129,0.08)] backdrop-blur-xl transition-all hover:border-emerald-300/50 hover:bg-emerald-400/15 hover:shadow-[0_0_28px_rgba(16,185,129,0.16)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/50"
+      className="inline-flex h-11 min-w-[48px] items-center justify-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-3 text-sm font-medium text-emerald-50 shadow-[0_0_24px_rgba(16,185,129,0.08)] backdrop-blur-xl transition-all hover:border-emerald-300/50 hover:bg-emerald-400/15 hover:shadow-[0_0_28px_rgba(16,185,129,0.16)] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/50 sm:min-w-[108px] sm:px-4"
     >
       <span className="text-xs uppercase tracking-wide text-emerald-300">{currentLanguage.code}</span>
-      <span>{currentLanguage.label}</span>
-      <ChevronDown className="h-4 w-4 text-emerald-200/70" />
+      <span className="hidden sm:inline">{currentLanguage.label}</span>
+      <ChevronDown className="hidden h-4 w-4 text-emerald-200/70 sm:block" />
+    </button>
+  )
+}
+
+function ThemeToggle({ theme, onToggle }) {
+  const isLight = theme === 'light'
+  const nextThemeLabel = isLight ? 'Switch to dark style' : 'Switch to bright style'
+
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={nextThemeLabel}
+      title={nextThemeLabel}
+      className="theme-toggle inline-flex h-11 min-w-[48px] items-center justify-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-3 text-sm font-medium text-cyan-50 shadow-[0_0_24px_rgba(6,182,212,0.08)] backdrop-blur-xl transition-all hover:border-cyan-300/50 hover:bg-cyan-400/15 hover:shadow-[0_0_28px_rgba(6,182,212,0.16)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50 sm:min-w-[108px] sm:px-4"
+    >
+      {isLight ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+      <span className="hidden sm:inline">{isLight ? 'Dark' : 'Bright'}</span>
     </button>
   )
 }
@@ -546,6 +566,13 @@ function FeatureCard({ feature, index }) {
 
 function App() {
   const [lang, setLang] = useState('en')
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') {
+      return 'dark'
+    }
+
+    return window.localStorage.getItem('tokenflow-theme') === 'light' ? 'light' : 'dark'
+  })
   const { scrollY } = useScroll()
   const y1 = useTransform(scrollY, [0, 500], [0, 200])
   const copy = CONTENT[lang]
@@ -554,12 +581,22 @@ function App() {
     document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN'
   }, [lang])
 
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.documentElement.style.colorScheme = theme
+    window.localStorage.setItem('tokenflow-theme', theme)
+  }, [theme])
+
   const toggleLanguage = () => {
     setLang((currentLang) => currentLang === 'en' ? 'zh' : 'en')
   }
 
+  const toggleTheme = () => {
+    setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')
+  }
+
   return (
-    <div className="min-h-screen bg-[#030014] text-white overflow-x-hidden">
+    <div className={`theme-${theme} min-h-screen bg-[#030014] text-white overflow-x-hidden transition-colors duration-300`}>
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -587,6 +624,7 @@ function App() {
             </div>
 
             <div className="flex items-center gap-3 md:gap-6">
+              <ThemeToggle theme={theme} onToggle={toggleTheme} />
               <LanguageToggle lang={lang} copy={copy} onToggle={toggleLanguage} />
               <button className="hidden lg:block text-gray-400 hover:text-white transition-colors text-sm font-medium">{copy.nav.signIn}</button>
               <button className="hidden sm:block bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 md:px-8 rounded-xl font-semibold hover:shadow-lg hover:shadow-emerald-500/30 transition-all hover:scale-105">
