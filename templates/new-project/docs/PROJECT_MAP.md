@@ -1,81 +1,84 @@
-# PROJECT MAP
+# 项目地图 (Project Map)
 
-## Project Snapshot
+## 项目快照 (Project Snapshot)
 
-`[project-root]` is a [project type] workspace centered on [project purpose].
+`[project-root]` 是一个围绕 `[project purpose]` 组织的 `[project type]` 工作区。
 
-- `[app-folder]/` is the main user-facing app or service.
-- `[secondary-folder]/` is an optional supporting app, job, or asset pipeline.
-- `[docs-or-config-folder]/` contains project-specific configuration and collaboration notes.
+- `[app-folder]/`：主应用或主服务。
+- `[secondary-folder]/`：可选的辅助应用、后台任务或资产流水线。
+- `[docs-or-config-folder]/`：项目配置、协作说明或文档。
 
-Most work should happen in the main app or service, with supporting folders used only when the task needs them.
+大多数工作应发生在主应用或主服务中，辅助目录只在任务需要时阅读和修改。
 
-## Suggested Reading Order
+## 推荐阅读顺序 (Suggested Reading Order)
 
-For a new Codex session, read the workspace in this order:
+新开的 Codex 会话建议按这个顺序读取：
 
 1. `AGENTS.md`
-2. `README.md` or `README.zh-CN.md`
+2. `README.md` 或 `README.zh-CN.md`
 3. `docs/PROJECT_MAP.md`
 4. `docs/COMMANDS.md`
 5. `docs/GIT_WORKFLOW.md`
-6. The latest relevant file under `docs/HANDOFFS/`
+6. `docs/HANDOFFS/` 下最新、最相关的交接文件
 
-## Architecture Map
+读完这些入口文档后，再根据当前任务只阅读相关源码文件。
 
-Describe the major runtime pieces here.
+## 架构地图 (Architecture Map)
 
-### Main App
+在这里描述主要运行模块。
 
-- What it is
-- Where the entry point lives
-- What files contain the core behavior
-- What the user sees
+### 主应用 (Main App)
 
-### Supporting Components
+- 它是什么
+- 入口文件在哪里
+- 哪些文件包含核心行为
+- 用户会看到什么
 
-- Background jobs
-- Shared libraries
-- Generated assets
-- Configuration files
+### 支撑组件 (Supporting Components)
 
-## Directory Guide
+- 后台任务
+- 共享库
+- 生成资产
+- 配置文件
 
-- `AGENTS.md`: workspace rules for parallel development and handoff hygiene.
-- `README.md` / `README.zh-CN.md`: entry pages for humans and new Codex sessions.
-- `docs/PROJECT_MAP.md`: stable onboarding map for the project shape and entry points.
-- `docs/COMMANDS.md`: compact command index for day-to-day work.
-- `docs/GIT_WORKFLOW.md`: lightweight guide for committing and pushing to GitHub.
-- `docs/NEW_CHAT_PROMPT.md`: copyable short prompt templates for starting new chats.
-- `docs/HANDOFFS/`: task-specific handoff notes for continuation work.
-- `[source-root]/`: project source code.
+## 目录指南 (Directory Guide)
 
-## Important Config
+- `AGENTS.md`：新会话默认规则、并行开发规则、交接要求。
+- `README.md` / `README.zh-CN.md`：人和新 Codex 会话的入口说明。
+- `docs/PROJECT_MAP.md`：项目结构、入口文件和风险区域地图。
+- `docs/COMMANDS.md`：日常运行、构建、测试命令索引。
+- `docs/GIT_WORKFLOW.md`：提交、commit、push 到 GitHub 的轻量流程。
+- `docs/NEW_CHAT_PROMPT.md`：新会话可复制的简短提示模板。
+- `docs/HANDOFFS/`：任务交接记录。
+- `[source-root]/`：项目源码目录。
 
-List the files that control runtime behavior, build behavior, deployment, and environment setup.
+## 重要配置 (Important Config)
 
-## Run And Access
+列出控制运行时行为、构建行为、部署和环境设置的文件。
 
-Document the commands used to install, run, test, build, and preview the project.
+## 运行和访问 (Run And Access)
 
-## Deployment
+记录安装、运行、测试、构建和预览项目所需的命令。
 
-Document where the project is deployed, if applicable.
+## 部署 (Deployment)
 
-## Development Entry Points
+如果项目已有部署目标，在这里记录部署平台、环境和入口。
 
-List the first files someone should open for common kinds of changes.
+## 开发入口 (Development Entry Points)
 
-## Risks And Unknowns
+列出不同类型修改最应该先打开的文件。
 
-- Parallel edits from other sessions
-- Generated files
-- External services
-- Areas that are easy to break
+## 风险和未知项 (Risks And Unknowns)
 
-## Maintenance Rules
+- 其他会话可能存在并行改动。
+- 生成文件可能不应该默认提交。
+- 外部服务、密钥和环境变量需要谨慎处理。
+- 标记容易破坏的区域或尚未确认的假设。
 
-- Keep `AGENTS.md` as the behavioral contract for new sessions.
-- Keep `README.md`, `README.zh-CN.md`, `docs/PROJECT_MAP.md`, and `docs/COMMANDS.md` aligned with the actual project shape and scripts.
-- Keep `docs/GIT_WORKFLOW.md` aligned with the actual Git remote and submission flow.
-- Add one handoff record per substantial task so future sessions can continue from the latest state without re-reading the whole project.
+## 维护规则 (Maintenance Rules)
+
+- `AGENTS.md` 是新会话行为规则入口。
+- `README.md`、`README.zh-CN.md`、`docs/PROJECT_MAP.md`、`docs/COMMANDS.md` 应与实际项目结构和脚本保持一致。
+- `docs/GIT_WORKFLOW.md` 应与实际 Git remote 和提交流程保持一致。
+- 新增或更新 `docs/` 下文档时，默认使用中文主文案；标题和关键术语保留英文标记，例如 `Project Map`、`Commands`、`Git Workflow`、`commit`、`push`、`GitHub`、`PR`。
+- 每个较大的任务完成后，应新增或更新一条 handoff 记录，避免后续会话重复理解上下文。

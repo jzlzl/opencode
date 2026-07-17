@@ -1,185 +1,196 @@
-# PROJECT MAP
+# 项目地图 (Project Map)
 
-## Project Snapshot
+## 项目快照 (Project Snapshot)
 
-`D:\opencode` is a small multi-project workspace centered on the TokenFlow product concept.
+`D:\opencode` 是一个围绕 TokenFlow 产品概念组织的小型多项目工作区。
 
-- `token-store/` is the main user-facing app: a React + Vite marketing site for TokenFlow.
-- `token-store-video/` is a Remotion project that renders English and Chinese promo videos for the same product story.
-- `.opencode/` contains local Codex/OpenCode configuration and skills that help future sessions work in this workspace.
+- `token-store/`：主要用户可见应用，是 TokenFlow 的 React + Vite 营销落地页。
+- `token-store-video/`：Remotion 宣传视频项目，用于生成英文和中文版本的产品视频。
+- `.opencode/`：本地 Codex/OpenCode 配置和技能目录。
+- `templates/new-project/`：可复用的新项目 Codex 文档模板。
 
-The current repository shape is intentionally lightweight. Most work happens in one of the two subprojects rather than through a shared app shell.
+当前仓库更像一个多项目工作区，而不是单一应用。大多数任务会落在 `token-store/` 或 `token-store-video/` 中。
 
-## Suggested Reading Order
+## 推荐阅读顺序 (Suggested Reading Order)
 
-For a new Codex session, read the workspace in this order:
+新开的 Codex 会话建议按这个顺序读取：
 
 1. `AGENTS.md`
-2. `README.md` or `README.zh-CN.md`
+2. `README.md` 或 `README.zh-CN.md`
 3. `docs/PROJECT_MAP.md`
 4. `docs/COMMANDS.md`
-5. The latest relevant file under `docs/HANDOFFS/`
+5. `docs/GIT_WORKFLOW.md`，如果任务涉及提交、push、GitHub 或 PR
+6. `docs/HANDOFFS/` 下与当前任务最相关的交接文件
 
-That sequence gives you the rules, the high-level shape, the execution commands, and the most recent task state without forcing a full repository reread.
+读完这些入口文档后，再根据当前任务只阅读相关源码文件，不要为了建立上下文默认扫描整个仓库。
 
-## Architecture Map
-
-### `token-store/`
-
-- Single-page React app built with Vite.
-- Uses Tailwind CSS v4 through `@tailwindcss/vite`.
-- Uses Framer Motion for section animation and Lucide React for iconography.
-- The main UI is concentrated in `src/App.jsx`.
-- Global visual rules live in `src/App.css` and `src/index.css`.
-- `src/main.jsx` mounts the app into `#root`.
-
-The page currently contains:
-
-- a fixed top navigation bar
-- hero content with a promo video
-- metric/stat sections
-- feature cards
-- pricing cards
-- integrations
-- CTA and footer
-
-Recent UI work added a top-right theme switch and language switch. The theme state is driven from `App.jsx` and themed through `App.css`.
-
-### `token-store-video/`
-
-- Remotion project for promotional video output.
-- `src/Root.tsx` defines the Remotion compositions.
-- `src/TokenFlowVideo.jsx` and `src/TokenFlowVideoZh.jsx` hold the English and Chinese versions.
-- `src/Composition.tsx` and `src/index.ts` provide supporting entry points.
-- `public/voiceover/` and `public/voiceover-zh/` contain generated audio assets.
-- `public/music/` contains background music assets.
-- `generate-promo-audio.ps1` and `generate-promo-audio-zh.ps1` generate local narration and music assets.
-- `generate-voiceover.mjs` and `generate-voiceover-tts.mjs` are supporting generation scripts.
-
-The video project is intentionally separate from the landing page so the same product story can be shipped as both web and motion assets.
-
-## Directory Guide
-
-- `AGENTS.md`: workspace rules for parallel development and handoff hygiene.
-- `README.md` / `README.zh-CN.md`: entry pages for humans and new Codex sessions.
-- `docs/PROJECT_MAP.md`: stable onboarding map for the project shape and entry points.
-- `docs/COMMANDS.md`: compact command index for day-to-day work.
-- `docs/GIT_WORKFLOW.md`: lightweight guide for committing and pushing to GitHub.
-- `docs/NEW_CHAT_PROMPT.md`: copyable short prompt templates for starting new chats.
-- `docs/HANDOFFS/`: task-specific handoff notes for continuation work.
-- `token-store/src/`: landing page source code.
-- `token-store/public/`: static media for the landing page.
-- `token-store-video/src/`: Remotion composition source code.
-- `token-store-video/public/`: voiceover, music, and rendered video assets.
-- `.agents/`: agent-specific support files and any local handoff artifacts.
-- `.opencode/`: Codex/OpenCode local configuration.
-- `templates/new-project/`: reusable starter layout for a new Codex-managed project.
-
-## Important Config
-
-### Root
-
-- `README.md` and `README.zh-CN.md` describe the workspace and point new sessions to the durable docs.
-- The root `package.json` is minimal and does not define the main product scripts.
+## 架构地图 (Architecture Map)
 
 ### `token-store/`
 
-- `package.json` defines `dev`, `build`, `preview`, and `lint`.
-- `vite.config.js` configures the Vite build.
-- `src/index.css` and `src/App.css` provide global and app-level styling.
-- `src/App.jsx` holds most of the page copy and layout logic.
+`token-store/` 是一个单页 React 应用，使用 Vite 构建。
+
+关键点：
+
+- Tailwind CSS v4 通过 `@tailwindcss/vite` 接入。
+- Framer Motion 用于页面动效。
+- Lucide React 用于图标。
+- 主 UI 集中在 `src/App.jsx`。
+- 全局和页面样式主要在 `src/App.css` 与 `src/index.css`。
+- `src/main.jsx` 负责挂载 React 应用。
+
+页面包含：
+
+- 固定顶部导航栏
+- Hero 区域和宣传视频
+- 指标展示区
+- 功能卡片
+- 价格卡片
+- 集成能力展示
+- CTA 和页脚
+
+最近的 UI 变更包括右上角主题切换和语言切换。主题状态由 `App.jsx` 管理，亮色/暗色样式主要通过 `App.css` 覆盖。
 
 ### `token-store-video/`
 
-- `package.json` defines `dev`, `build`, `lint`, and `upgrade`.
-- `remotion.config.ts` configures the Remotion project.
-- `tsconfig.json` enables TypeScript checking for the video code.
-- `eslint.config.mjs` controls linting.
+`token-store-video/` 是 Remotion 视频项目，用于生成 TokenFlow 宣传视频。
 
-## Run And Access
+关键点：
 
-### Landing page
+- `src/Root.tsx` 定义 Remotion compositions。
+- `src/TokenFlowVideo.jsx` 是英文版本。
+- `src/TokenFlowVideoZh.jsx` 是中文版本。
+- `src/Composition.tsx` 和 `src/index.ts` 是辅助入口。
+- `public/voiceover/` 与 `public/voiceover-zh/` 存放生成的配音文件。
+- `public/music/` 存放背景音乐资源。
+- `generate-promo-audio.ps1` 和 `generate-promo-audio-zh.ps1` 用于本地生成音频资源。
 
-From `D:\opencode\token-store`:
+视频项目和落地页项目是分离的，这样同一套产品叙事可以分别用于网页和视频资产。
+
+## 目录指南 (Directory Guide)
+
+- `AGENTS.md`：Codex 默认行为规则、并行开发规则、交接要求。
+- `README.md` / `README.zh-CN.md`：人和新 Codex 会话的入口说明。
+- `docs/PROJECT_MAP.md`：项目结构、入口文件和风险区域地图。
+- `docs/COMMANDS.md`：运行、构建、验证命令索引。
+- `docs/GIT_WORKFLOW.md`：提交、commit、push 到 GitHub 的轻量流程。
+- `docs/NEW_CHAT_PROMPT.md`：新会话可复制的简短提示模板。
+- `docs/HANDOFFS/`：任务交接记录。命名使用 `YYYY-MM-DD-HHMM-short-topic.md`，确保同一天多次交接也能按文件名排序。
+- `token-store/src/`：落地页源码。
+- `token-store/public/`：落地页静态媒体资源。
+- `token-store-video/src/`：Remotion composition 源码。
+- `token-store-video/public/`：视频项目的配音、音乐和渲染资源。
+- `.agents/`：agent 相关支持文件。
+- `.opencode/`：Codex/OpenCode 本地配置。
+- `templates/new-project/`：可复制到新项目的 Codex 文档模板。
+
+## 重要配置 (Important Config)
+
+### 根目录 (Root)
+
+- `README.md` 和 `README.zh-CN.md` 指向稳定的项目入口文档。
+- 根目录 `package.json` 很小，不是主要项目脚本入口。
+
+### `token-store/`
+
+- `package.json` 定义 `dev`、`build`、`preview`、`lint`。
+- `vite.config.js` 配置 Vite。
+- `src/App.jsx` 包含大部分页面内容、组件和布局。
+- `src/App.css` 与 `src/index.css` 包含全局和页面级样式。
+
+### `token-store-video/`
+
+- `package.json` 定义 `dev`、`build`、`lint`、`upgrade`。
+- `remotion.config.ts` 配置 Remotion。
+- `tsconfig.json` 配置 TypeScript 检查。
+- `eslint.config.mjs` 配置 lint。
+
+## 运行和访问 (Run And Access)
+
+### 落地页 (Landing Page)
+
+在 `D:\opencode\token-store` 下运行：
 
 ```powershell
 npm install
 npm run dev
 ```
 
-The local Vite dev server usually opens on:
+本地 Vite 开发服务通常是：
 
 ```text
 http://127.0.0.1:5173
 ```
 
-For the full landing-page command list, see `docs/COMMANDS.md`.
+完整命令见 `docs/COMMANDS.md`。
 
-### Video project
+### 视频项目 (Video Project)
 
-From `D:\opencode\token-store-video`:
+在 `D:\opencode\token-store-video` 下运行：
 
 ```powershell
 npm install
 npm run dev
 ```
 
-For the full video command list and asset-generation steps, see `docs/COMMANDS.md`.
+完整命令和音频生成步骤见 `docs/COMMANDS.md`。
 
-## Deployment
+## 部署 (Deployment)
 
-No explicit deployment target is configured in this workspace snapshot.
+当前没有明确的部署配置文件。
 
-What is present:
+已存在的生成产物：
 
-- Vite build output for the landing page under `token-store/dist/`
-- Remotion bundle and rendered outputs under `token-store-video/build/` and `token-store-video/out/`
+- `token-store/dist/`：Vite 构建产物。
+- `token-store-video/build/`：Remotion bundle 产物。
+- `token-store-video/out/`：已渲染的截图和视频文件。
 
-What is not present in the current repo state:
+当前未看到：
 
-- no checked-in Vercel/Cloudflare/Netlify deployment config
-- no CI pipeline files in the visible workspace root
+- Vercel / Cloudflare / Netlify 配置
+- CI pipeline 配置
 
-## Development Entry Points
+## 开发入口 (Development Entry Points)
 
-### Landing page work
+### 修改落地页
 
-Start here:
+优先查看：
 
 - `token-store/src/App.jsx`
 - `token-store/src/App.css`
 - `token-store/src/main.jsx`
 
-Good follow-up files:
+必要时再看：
 
 - `token-store/src/index.css`
 - `token-store/vite.config.js`
 
-### Video work
+### 修改视频项目
 
-Start here:
+优先查看：
 
 - `token-store-video/src/Root.tsx`
 - `token-store-video/src/TokenFlowVideo.jsx`
 - `token-store-video/src/TokenFlowVideoZh.jsx`
 
-Good follow-up files:
+必要时再看：
 
 - `token-store-video/src/Composition.tsx`
 - `token-store-video/remotion.config.ts`
 - `token-store-video/generate-promo-audio.ps1`
 - `token-store-video/generate-promo-audio-zh.ps1`
 
-## Risks And Unknowns
+## 风险和未知项 (Risks And Unknowns)
 
-- The workspace is used for parallel Codex sessions, so local changes may already exist before a new task starts.
-- Generated artifacts such as `dist/`, `build/`, and `out/` are already present in the repo tree and should be handled carefully.
-- The theme system in `token-store` is currently implemented through class-based overrides. Future layout changes may need matching CSS updates.
-- The video project relies on locally generated voiceover assets; missing or regenerated audio files can change scene timing.
+- 本仓库可能被多个 Codex 会话并行修改，开始前必须确认工作区状态。
+- `dist/`、`build/`、`out/` 等生成产物已经存在，提交前要确认是否应该包含。
+- `token-store` 的主题系统通过 class-based overrides 实现，后续大改布局时可能需要同步更新样式覆盖。
+- 视频项目依赖本地生成的配音文件，音频缺失或重新生成可能改变场景时长。
 
-## Maintenance Rules
+## 维护规则 (Maintenance Rules)
 
-- Keep `AGENTS.md` as the behavioral contract for new sessions.
-- Keep `README.md`, `README.zh-CN.md`, `docs/PROJECT_MAP.md`, and `docs/COMMANDS.md` aligned with the actual project shape and scripts.
-- Keep `docs/GIT_WORKFLOW.md` aligned with the actual Git remote and submission flow.
-- Add one handoff record per substantial task so future sessions can continue from the latest state without re-reading the whole project.
+- `AGENTS.md` 是新会话行为规则入口。
+- `README.md`、`README.zh-CN.md`、`docs/PROJECT_MAP.md`、`docs/COMMANDS.md` 应与实际项目结构和脚本保持一致。
+- `docs/GIT_WORKFLOW.md` 应与实际 Git remote 和提交流程保持一致。
+- 新增或更新 `docs/` 下文档时，默认使用中文主文案；标题和关键术语保留英文标记，例如 `Project Map`、`Commands`、`Git Workflow`、`commit`、`push`、`GitHub`、`PR`。
+- 每个较大的任务完成后，应新增或更新一条 handoff 记录，避免后续会话重复理解上下文。

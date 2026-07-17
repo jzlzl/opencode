@@ -1,24 +1,22 @@
-# COMMANDS
+# 命令索引 (Commands)
 
-This file is the compact command index for future Codex sessions.
+这个文件是给后续 Codex 会话使用的紧凑命令索引。
 
-Read `AGENTS.md` and `docs/PROJECT_MAP.md` first, then use this file for the actual commands.
+开始执行命令前，先阅读 `AGENTS.md` 和 `docs/PROJECT_MAP.md`。如果任务涉及提交、push、GitHub 或 PR，再阅读 `docs/GIT_WORKFLOW.md`。
 
-For commit and push steps, see `docs/GIT_WORKFLOW.md`.
+## 根目录 (Root Workspace)
 
-## Root Workspace
-
-From `D:\opencode`:
+在 `D:\opencode` 下运行：
 
 ```powershell
 git status --short --branch
 ```
 
-Use this first to check whether the workspace already contains local changes.
+作用：确认当前分支、是否落后/领先远端，以及是否存在未提交改动。
 
-## `token-store/`
+## 落地页项目 (token-store)
 
-From `D:\opencode\token-store`:
+在 `D:\opencode\token-store` 下运行：
 
 ```powershell
 npm install
@@ -28,21 +26,23 @@ npm run preview
 npm run lint
 ```
 
-- `npm install` installs the landing-page dependencies.
-- `npm run dev` starts the Vite development server.
-- `npm run build` creates the production bundle in `dist/`.
-- `npm run preview` serves the production build locally.
-- `npm run lint` runs Oxlint checks.
+命令说明：
 
-Local preview URL:
+- `npm install`：安装落地页依赖。
+- `npm run dev`：启动 Vite 开发服务器。
+- `npm run build`：构建生产静态资源到 `dist/`。
+- `npm run preview`：本地预览生产构建结果。
+- `npm run lint`：运行 Oxlint 检查。
+
+本地预览地址通常是：
 
 ```text
 http://127.0.0.1:5173
 ```
 
-## `token-store-video/`
+## 视频项目 (token-store-video)
 
-From `D:\opencode\token-store-video`:
+在 `D:\opencode\token-store-video` 下运行：
 
 ```powershell
 npm install
@@ -53,27 +53,32 @@ npm run upgrade
 npx remotion render
 ```
 
-- `npm run dev` opens Remotion Studio.
-- `npm run build` bundles the Remotion project.
-- `npm run lint` runs ESLint and TypeScript checks.
-- `npm run upgrade` runs the Remotion upgrade helper.
-- `npx remotion render` renders a composition from the CLI.
+命令说明：
 
-## Asset Generation
+- `npm install`：安装视频项目依赖。
+- `npm run dev`：启动 Remotion Studio。
+- `npm run build`：打包 Remotion 项目。
+- `npm run lint`：运行 ESLint 和 TypeScript 检查。
+- `npm run upgrade`：运行 Remotion 升级助手。
+- `npx remotion render`：通过 CLI 渲染 composition。
 
-From `D:\opencode\token-store-video`:
+## 音频资源生成 (Asset Generation)
+
+在 `D:\opencode\token-store-video` 下运行：
 
 ```powershell
 .\generate-promo-audio.ps1
 .\generate-promo-audio-zh.ps1
 ```
 
-- `generate-promo-audio.ps1` regenerates English narration and music assets.
-- `generate-promo-audio-zh.ps1` regenerates Chinese narration assets.
+说明：
 
-## Recommended Validation
+- `generate-promo-audio.ps1`：重新生成英文配音和音乐资源。
+- `generate-promo-audio-zh.ps1`：重新生成中文配音资源。
 
-When touching the landing page:
+## 推荐验证 (Recommended Validation)
+
+修改落地页时：
 
 ```powershell
 cd D:\opencode\token-store
@@ -81,11 +86,12 @@ npm run lint
 npm run build
 ```
 
-When touching the video project:
+修改视频项目时：
 
 ```powershell
 cd D:\opencode\token-store-video
 npm run lint
 ```
 
-If timing or media changes are involved, preview in Remotion Studio and render a sample composition before handing off.
+如果任务影响浏览器可见界面，应在本地预览里进行实际 UI 检查。
+如果任务影响视频节奏、音频或渲染效果，应在 Remotion Studio 中预览，并在必要时渲染样片。

@@ -1,31 +1,51 @@
-# COMMANDS
+# 命令索引 (Commands)
 
-This file is the compact command index for future Codex sessions.
+这个文件是给后续 Codex 会话使用的精简命令索引。
 
-Read `AGENTS.md` and `docs/PROJECT_MAP.md` first, then use this file for the actual commands.
+请先读取 `AGENTS.md` 和 `docs/PROJECT_MAP.md`，再使用本文件执行具体命令。
 
-For commit and push steps, see `docs/GIT_WORKFLOW.md`.
+提交和 push 步骤见 `docs/GIT_WORKFLOW.md`。
 
-## Root Workspace
+## 根工作区 (Root Workspace)
 
-From `[project-root]`:
+在 `[project-root]` 下运行：
 
 ```powershell
 git status --short --branch
 ```
 
-## Main App
+## 主应用 (Main App)
 
-List the common commands used to install, run, test, build, and preview the main app.
+在这里列出主应用常用的安装、运行、测试、构建和预览命令。
 
-## Supporting App Or Jobs
+```powershell
+[install command]
+[dev command]
+[test command]
+[build command]
+[preview command]
+```
 
-List the commands used by any background service, job runner, asset pipeline, or supporting tool.
+## 支撑应用或任务 (Supporting App Or Jobs)
 
-## Asset Generation
+在这里列出后台服务、任务运行器、资产流水线或辅助工具使用的命令。
 
-If the project generates assets locally, document those commands here.
+```powershell
+[command]
+```
 
-## Recommended Validation
+## 资产生成 (Asset Generation)
 
-Write the checks that should usually run before handoff or commit.
+如果项目会在本地生成图片、视频、音频、类型文件或其他资产，在这里记录命令。
+
+```powershell
+[asset generation command]
+```
+
+## 推荐验证 (Recommended Validation)
+
+在这里写明交接或提交前通常应该运行的检查。
+
+```powershell
+[validation command]
+```

@@ -1,58 +1,62 @@
-# Agent Instructions
+# 智能体指令 (Agent Instructions)
 
-## New Project Defaults
+## 新项目默认入口 / New Project Defaults
 
-When this template is copied into a new workspace, new Codex conversations should start by reading:
-- `README.md` or `README.zh-CN.md`
+当这个模板复制到新的工作区后，新开的 Codex 对话应优先读取：
+- `README.md` 或 `README.zh-CN.md`
 - `docs/PROJECT_MAP.md`
 - `docs/COMMANDS.md`
 - `docs/GIT_WORKFLOW.md`
-- the latest relevant file under `docs/HANDOFFS/`
+- `docs/HANDOFFS/` 下最新、最相关的交接文件
 
-After that, read only the source files directly relevant to the task.
+读取这些文档后，再根据当前任务只阅读直接相关的源码文件；不要为了建立上下文默认扫描整个仓库。
 
-## Parallel Work
+## 文档风格 / Documentation Style
 
-- Check the current git status before editing.
-- Assume the workspace may already contain uncommitted changes from another session.
-- Do not overwrite unrelated changes.
-- Keep edits scoped to the current task.
-- Avoid unrelated refactors, formatting sweeps, or dependency upgrades.
+新增或更新 `docs/` 下文档时，默认使用中文主文案；标题和关键术语可保留英文括注或英文原词，例如 `项目地图 (Project Map)`、`命令索引 (Commands)`、`Git 工作流 (Git Workflow)`、`commit`、`push`、`GitHub`、`PR`。
 
-## Protected Files
+## 并行开发 / Parallel Work
 
-Unless the task explicitly requires it, do not modify:
+- 修改前先检查当前 git 状态。
+- 默认认为工作区里可能已有其他会话或用户留下的未提交改动。
+- 不要覆盖无关改动。
+- 修改范围保持在当前任务内。
+- 避免无关重构、全局格式化或依赖升级。
+
+## 受保护文件 / Protected Files
+
+除非任务明确需要，不要修改：
 - `.env`
 - `.env.local`
-- lockfiles
-- deployment config
-- global project config
-- other shared files unrelated to the task
+- lockfile
+- 部署配置
+- 全局项目配置
+- 其他与当前任务无关的共享文件
 
-## Task Scope
+## 任务范围 / Task Scope
 
-- If the task is unclear, make a conservative assumption and only edit what is necessary.
-- If a change might disrupt another session, explain the risk before proceeding.
+- 如果任务不清楚，先做保守判断，只编辑完成任务所必需的文件。
+- 如果某个改动可能影响另一个会话，请先说明风险再继续。
 
-## Review Tasks
+## 审查任务 / Review Tasks
 
-- Default to review only.
-- Call out bugs, regressions, missing tests, and integration risks.
-- Only edit files if the user explicitly asks for fixes.
+- 默认只做 review，不修改代码。
+- 优先指出 bug、回归风险、缺失测试和集成风险。
+- 只有在用户明确要求修复时才编辑文件。
 
-## Implementation Tasks
+## 实现任务 / Implementation Tasks
 
-- Keep changes focused.
-- Reuse the existing project style and tools.
-- Add verification when the change affects user-visible behavior.
+- 保持改动聚焦。
+- 复用项目已有风格和工具。
+- 涉及用户可见行为时，尽量增加或运行验证。
 
-## Handoff
+## 交接 / Handoff
 
-At the end of a task, include:
-- modified files
-- what changed
-- what did not change
-- commands or tests run
-- verification result
-- known risks
-- next step
+任务结束时，请输出交接摘要，包括：
+- 修改了哪些文件
+- 实现了什么
+- 没有改什么
+- 运行了哪些命令或测试
+- 验证结果
+- 已知风险
+- 下一步建议

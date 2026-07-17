@@ -1,76 +1,80 @@
-# Git Workflow
+# Git 工作流 (Git Workflow)
 
-This document describes the lightweight path from local changes to a GitHub push for this workspace.
+这个文件说明本工作区从本地改动到 GitHub push 的轻量流程。
 
-## Before You Commit
+## 提交前检查 (Before You Commit)
 
-1. Check the current state.
+1. 查看当前状态。
 
 ```powershell
 git status --short --branch
 ```
 
-2. Review the diff you actually intend to ship.
+2. 查看准备提交的实际 diff。
 
 ```powershell
 git diff
 ```
 
-3. Make sure you are not including unrelated local changes.
+3. 确认没有包含无关改动。
 
-The workspace is used by parallel Codex sessions, so keep the commit scope tight.
+本仓库可能被多个 Codex 会话并行开发，因此 commit 范围要尽量小而清晰。
 
-## Recommended Flow
+## 推荐流程 (Recommended Flow)
 
-### 1. Stage only the intended files
+### 1. 只暂存目标文件 (Stage Intended Files)
 
 ```powershell
 git add <file-or-folder>
 ```
 
-Use narrow paths rather than staging the whole tree unless the task is intentionally broad.
+优先使用明确路径，不要默认 `git add .`，除非本次任务确实覆盖整个变更范围。
 
-### 2. Create a focused commit
+### 2. 创建聚焦提交 (Focused Commit)
 
 ```powershell
 git commit -m "Describe the change"
 ```
 
-Use a short, specific message that reflects the user-visible change or fix.
+提交信息应简短、具体，能反映用户可见变化或修复内容。
 
-### 3. Push to GitHub
+### 3. 推送到 GitHub (Push To GitHub)
 
 ```powershell
 git push origin <branch-name>
 ```
 
-The repository already has an `origin` remote configured for GitHub.
+当前仓库已经配置了 GitHub `origin` remote。
 
-## Common Patterns
+## 常见模式 (Common Patterns)
 
-- If you are already on a feature branch, push that branch directly.
-- If you are working on `main`, check whether the task expects a branch first.
-- If the task should be reviewed before landing, push the branch and open a pull request.
+- 如果已经在功能分支上，可以直接 push 当前分支。
+- 如果正在 `main` 上工作，先确认任务是否要求新建分支。
+- 如果需要审查后再合并，push 分支后再创建 PR。
 
-## What Not To Commit By Default
+## 默认不要提交 (Do Not Commit By Default)
+
+除非任务明确要求，不要默认提交：
 
 - `.vscode/`
-- Environment files such as `.env` and `.env.local`
-- Lockfiles, unless the task explicitly requires them
-- Deployment or global configuration files, unless the task explicitly requires them
+- `.env`、`.env.local` 等环境文件
+- lockfile
+- 部署配置
+- 全局配置
+- 与当前任务无关的共享文件
 
-## Useful Checks
+## 有用检查 (Useful Checks)
 
-Before handing off or pushing, run the checks that match the task:
+提交或 push 前，根据任务类型运行相关检查：
 
-- `npm run lint` in `token-store/`
-- `npm run build` in `token-store/`
-- `npm run lint` in `token-store-video/`
+- `token-store/` 中的 `npm run lint`
+- `token-store/` 中的 `npm run build`
+- `token-store-video/` 中的 `npm run lint`
 
-For tasks that include a browser-visible change, verify the relevant UI before committing.
+如果任务包含用户可见界面变化，还应进行本地浏览器检查。
 
-## Related Docs
+## 相关文档 (Related Docs)
 
-- [Project Map](PROJECT_MAP.md)
-- [Command Index](COMMANDS.md)
-- [New Chat Prompt](NEW_CHAT_PROMPT.md)
+- [项目地图 (Project Map)](PROJECT_MAP.md)
+- [命令索引 (Command Index)](COMMANDS.md)
+- [新会话模板 (New Chat Prompt)](NEW_CHAT_PROMPT.md)

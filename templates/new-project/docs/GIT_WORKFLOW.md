@@ -1,58 +1,58 @@
-# Git Workflow
+# Git 工作流 (Git Workflow)
 
-This document describes the lightweight path from local changes to a GitHub push for this workspace.
+这个文档记录从本地改动到 GitHub push 的轻量流程。
 
-## Before You Commit
+## 提交前检查 (Before You Commit)
 
-1. Check the current state.
+1. 检查当前状态。
 
 ```powershell
 git status --short --branch
 ```
 
-2. Review the diff you actually intend to ship.
+2. 查看本次真正准备提交的 diff。
 
 ```powershell
 git diff
 ```
 
-3. Make sure you are not including unrelated local changes.
+3. 确认没有包含无关的本地改动。
 
-## Recommended Flow
+## 推荐流程 (Recommended Flow)
 
-### 1. Stage only the intended files
+### 1. 只暂存本次需要的文件 (Stage Intended Files)
 
 ```powershell
 git add <file-or-folder>
 ```
 
-### 2. Create a focused commit
+### 2. 创建聚焦的提交 (Create A Focused Commit)
 
 ```powershell
 git commit -m "Describe the change"
 ```
 
-### 3. Push to GitHub
+### 3. push 到 GitHub (Push To GitHub)
 
 ```powershell
 git push origin <branch-name>
 ```
 
-## Common Patterns
+## 常见模式 (Common Patterns)
 
-- If you are already on a feature branch, push that branch directly.
-- If you are working on `main`, check whether the task expects a branch first.
-- If the task should be reviewed before landing, push the branch and open a pull request.
+- 如果已经在 feature branch 上，通常直接 push 当前分支。
+- 如果正在 `main` 上工作，先确认任务是否需要新建分支。
+- 如果改动需要 review 后再合并，push 分支并创建 PR。
 
-## What Not To Commit By Default
+## 默认不要提交什么 (What Not To Commit By Default)
 
 - `.vscode/`
-- Environment files such as `.env` and `.env.local`
-- Lockfiles, unless the task explicitly requires them
-- Deployment or global configuration files, unless the task explicitly requires them
+- `.env`、`.env.local` 等环境文件
+- lockfile，除非任务明确要求
+- 部署或全局配置文件，除非任务明确要求
 
-## Related Docs
+## 相关文档 (Related Docs)
 
-- [Project Map](PROJECT_MAP.md)
-- [Command Index](COMMANDS.md)
-- [New Chat Prompt](NEW_CHAT_PROMPT.md)
+- [项目地图 (Project Map)](PROJECT_MAP.md)
+- [命令索引 (Command Index)](COMMANDS.md)
+- [新会话模板 (New Chat Prompt)](NEW_CHAT_PROMPT.md)

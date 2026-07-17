@@ -1,8 +1,8 @@
-# New Project Template Usage
+# 新项目模板用法 (New Project Template Usage)
 
-This folder is a reusable starter layout for a new Codex-managed project.
+这个目录是可复用的新项目起步结构，适合复制到新的 Codex 管理项目中。
 
-## Structure
+## 结构 (Structure)
 
 ```text
 templates/new-project/
@@ -19,23 +19,27 @@ templates/new-project/
         └── TEMPLATE.md
 ```
 
-## How To Use
+## 如何使用 (How To Use)
 
-1. Copy this directory into the new project.
-2. Replace `[Project Name]`, `[project-root]`, `[path]`, and other placeholders.
-3. Fill in the real source folders, commands, entry points, and deployment notes.
-4. Keep the documents short, stable, and aligned with the actual codebase.
-5. Remove `TEMPLATE_USAGE.md` from the new project if the team does not need template instructions there.
+1. 将这个目录复制到新项目中。
+2. 替换 `[项目名称]`、`[project-root]`、`[path]` 等占位符。
+3. 补全真实源码目录、命令、入口文件和部署说明。
+4. 保持文档简短、稳定，并与实际代码同步。
+5. 如果团队不需要模板说明，可以在新项目中删除 `TEMPLATE_USAGE.md`。
 
-## What This Template Covers
+## 文档风格 (Documentation Style)
 
-- Default Codex rules through `AGENTS.md`
-- Project orientation through `docs/PROJECT_MAP.md`
-- Run/build/test commands through `docs/COMMANDS.md`
-- GitHub commit and push workflow through `docs/GIT_WORKFLOW.md`
-- New-chat starter text through `docs/NEW_CHAT_PROMPT.md`
-- Task handoff format through `docs/HANDOFFS/TEMPLATE.md`
+模板默认采用中文主文案；标题和关键术语保留英文标记，例如 `Project Map`、`Commands`、`Git Workflow`、`commit`、`push`、`GitHub`、`PR`。复制到新项目后，新增或更新 `docs/` 文档时继续保持这个风格。
 
-## What This Template Does Not Cover
+## 覆盖内容 (What This Template Covers)
 
-It does not prescribe a source-code layout, framework, package manager, deployment provider, or test runner. Add those according to the new project's actual stack.
+- 通过 `AGENTS.md` 提供默认 Codex 规则。
+- 通过 `docs/PROJECT_MAP.md` 提供项目导览。
+- 通过 `docs/COMMANDS.md` 记录运行、构建、测试命令。
+- 通过 `docs/GIT_WORKFLOW.md` 记录 GitHub commit 和 push 流程。
+- 通过 `docs/NEW_CHAT_PROMPT.md` 提供新会话简短提示。
+- 通过 `docs/HANDOFFS/TEMPLATE.md` 提供任务交接格式。
+
+## 不覆盖内容 (What This Template Does Not Cover)
+
+这个模板不预设源码目录结构、框架、包管理器、部署平台或测试工具。请根据新项目的实际技术栈补充。

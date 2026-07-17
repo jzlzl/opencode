@@ -1,8 +1,10 @@
-# New Chat Prompt
+# 新会话模板 (New Chat Prompt)
 
-Use this short template when starting a new Codex chat for this workspace.
+这个文件提供给新 Codex 对话使用的简短开场模板。
 
-## General Task
+详细规则放在 `AGENTS.md` 中，所以这里故意保持简短，避免重复维护两份规则。
+
+## 通用任务 (General Task)
 
 ```text
 这是 D:\opencode 项目的任务。
@@ -13,7 +15,7 @@ Use this short template when starting a new Codex chat for this workspace.
 【写你的任务】
 ```
 
-## Continue From Handoff
+## 继续交接任务 (Continue From Handoff)
 
 ```text
 这是 D:\opencode 项目的继续任务。
@@ -25,7 +27,7 @@ D:\opencode\docs\HANDOFFS\【handoff 文件名】
 【写你的任务】
 ```
 
-## Review Task
+## 审查任务 (Review Task)
 
 ```text
 这是 D:\opencode 项目的 review 任务。
@@ -36,6 +38,19 @@ Review 范围：
 【写当前 diff、某个文件、某个功能或某个 handoff】
 ```
 
-## Notes
+## 提交任务 (Commit Task)
 
-The detailed rules live in `AGENTS.md`, so this prompt intentionally stays short. Do not duplicate rules here unless the project policy changes.
+```text
+这是 D:\opencode 项目的提交任务。
+
+请按项目默认入口读取文档，并参考 docs/GIT_WORKFLOW.md。
+
+提交范围：
+【写要提交的文件或任务范围】
+```
+
+## 说明 (Notes)
+
+- 不要在这个文件里重复 `AGENTS.md` 的详细规则。
+- 如果项目规则变化，优先更新 `AGENTS.md`。
+- 如果提交流程变化，更新 `docs/GIT_WORKFLOW.md`。

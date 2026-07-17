@@ -13,6 +13,10 @@
 如果用户只给出一个简短任务，可以按 `docs/NEW_CHAT_PROMPT.md` 的模板理解任务入口。
 如果用户提到提交、push、commit、GitHub 或 PR，优先读取 `docs/GIT_WORKFLOW.md`。
 
+## 文档风格 / Documentation Style
+
+新增或更新 `docs/` 下文档时，默认使用中文主文案；标题和关键术语可保留英文括注或英文原词，例如 `项目地图 (Project Map)`、`提交前检查 (Before You Commit)`、`commit`、`push`、`GitHub`、`PR`。
+
 ## 并行开发规则 / Parallel Development
 
 本仓库可能会被多个 Codex 对话并行开发。
@@ -71,6 +75,8 @@
 - 在整合前后说明关键取舍。
 
 ## 完成时交接 / Handoff Summary
+
+如需新增 handoff 文件，使用 `docs/HANDOFFS/YYYY-MM-DD-HHMM-short-topic.md` 命名，确保同一天多次交接也能按文件名排序。
 
 每次任务结束时，请输出交接摘要，包括：
 - 修改了哪些文件

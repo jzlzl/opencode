@@ -1,41 +1,41 @@
-# New Chat Prompt
+# 新会话模板 (New Chat Prompt)
 
-Use this short template when starting a new Codex chat for this workspace.
+在这个工作区开启新的 Codex 对话时，可以使用下面的简短模板。
 
-## General Task
+## 通用任务 (General Task)
 
 ```text
-This is a task for [project name].
+这是 [项目名称] 项目的任务。
 
-Please read the project defaults and then only the source files directly relevant to the task.
+请按项目默认入口读取文档，然后只读取和当前任务直接相关的源码文件。
 
-Task:
-[write your task here]
+任务：
+[在这里写任务]
 ```
 
-## Continue From Handoff
+## 从交接继续 (Continue From Handoff)
 
 ```text
-This is a continuation task for [project name].
+这是 [项目名称] 项目的延续任务。
 
-Please read the project defaults and the matching handoff:
+请按项目默认入口读取文档，并读取这条 handoff：
 [path to handoff]
 
-Task:
-[write your task here]
+任务：
+[在这里写任务]
 ```
 
-## Review Task
+## 审查任务 (Review Task)
 
 ```text
-This is a review task for [project name].
+这是 [项目名称] 项目的 review 任务。
 
-Please read the project defaults. Default to review only and do not modify code.
+请按项目默认入口读取文档。默认只 review，不修改代码。
 
-Review scope:
-[write the diff, file, feature, or handoff]
+Review 范围：
+[写当前 diff、某个文件、某个功能或某个 handoff]
 ```
 
-## Notes
+## 备注 (Notes)
 
-Keep the prompt short and let `AGENTS.md` hold the durable rules.
+提示词保持简短，把长期规则放在 `AGENTS.md` 和 `docs/` 文档里维护。
